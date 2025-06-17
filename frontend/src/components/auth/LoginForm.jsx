@@ -1,13 +1,11 @@
 import React,{useContext,useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import axios from axios;
 
 function LoginForm(){
     const [form,setform]=useState({email:"",password:""})
 
-    const handlesubmit=async (e)=>{
-        const res = await axios.post("/login",form)
+        const handlesubmit= async (e)=>{
     }
 
     return(
@@ -18,6 +16,7 @@ function LoginForm(){
                     <input type="password" placeholder="Enter password" value={form.password} onChange={(e)=>setform({...form,password:e.target.value})} />
                     <button type="submit">Login</button>
                 </form>
+                <Link to="/register" >Click here to Register</Link>
             </div>
         </div>
     )

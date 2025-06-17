@@ -1,12 +1,19 @@
 import './App.css';
-import login from './pages/auth/login';
-import Footer from './components/common/Footer';
+import Login from './pages/auth/login';
+import Register from './pages/auth/register';
+import Landing from './pages/auth/landingpage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <div>
-      <login />
+      <Router>
+        <Routes>
+          <Route path='/' element={<Landing />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
