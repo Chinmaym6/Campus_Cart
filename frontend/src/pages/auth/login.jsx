@@ -2,7 +2,7 @@ import React,{useContext,useState} from "react";
 import { useNavigate } from "react-router-dom";
 import LoginForm from "../../components/auth/LoginForm";
 
-function login(){
+function Login(){
     return(
         <div>
             <LoginForm />
@@ -10,4 +10,4 @@ function login(){
     )
 }
 
-export default login;
+export default Login;

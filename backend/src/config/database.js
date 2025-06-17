@@ -8,7 +8,7 @@ const pool = new Pool({
     host:process.env.HOST,
     database:process.env.DATABASE,
     password:process.env.PASSWORD,
-    port:process.env.DB_PORT
+    port:Number(process.env.DB_PORT),
 });
 
 const connectToDatabase = async (e)=>{
