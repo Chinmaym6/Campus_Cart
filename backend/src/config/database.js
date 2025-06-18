@@ -22,4 +22,4 @@ const connectToDatabase = async (e)=>{
     }
 };
 
-export default connectToDatabase;
+export default {pool,connectToDatabase};
