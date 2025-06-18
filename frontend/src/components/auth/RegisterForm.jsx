@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import api from "../../utils/api";
 export default function RegisterForm() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
-    fname: "",
-    lname: "",
-    phnumber: "",
+    first_name: "",
+    last_name: "",
+    phone: "",
     student_id: "",
     email: "",
     password: "",
@@ -14,9 +14,15 @@ export default function RegisterForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: call your register API, then…
-    // on success:
-    // navigate("/login");
+    try{
+      const res = await api.post('/auth/register',form)
+      console.log("Registration success",res.data)
+      navigate("/login")
+    }
+    catch(error){
+      console.error('Registration error:', error.response?.data || error.message);
+      alert(error.response?.data?.error || "Registration failed");
+    };
   };
 
   return (
@@ -25,22 +31,22 @@ export default function RegisterForm() {
         <input
           type="text"
           placeholder="First name"
-          value={form.fname}
-          onChange={(e) => setForm({ ...form, fname: e.target.value })}
+          value={form.first_name}
+          onChange={(e) => setForm({ ...form, first_name: e.target.value })}
           required
         />
         <input
           type="text"
           placeholder="Last name"
-          value={form.lname}
-          onChange={(e) => setForm({ ...form, lname: e.target.value })}
+          value={form.last_name}
+          onChange={(e) => setForm({ ...form, last_name: e.target.value })}
           required
         />
         <input
           type="tel"
           placeholder="Enter Ph. number"
-          value={form.phnumber}
-          onChange={(e) => setForm({ ...form, phnumber: e.target.value })}
+          value={form.phone}
+          onChange={(e) => setForm({ ...form, phone: e.target.value })}
           required
         />
         <input
