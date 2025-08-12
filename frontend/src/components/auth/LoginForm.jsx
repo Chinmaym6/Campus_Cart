@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from 'axios';
@@ -12,33 +12,70 @@ function LoginForm() {
 
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent default form submission behavior
-        setError(""); // Clear any previous errors
-        setLoading(true); // Set loading state to true
+        e.preventDefault();
+        setError("");
+        setLoading(true);
 
         try {
-            // Send a POST request to the login endpoint
-            const response = await axios.post('http://localhost:5000/api/auth/login', {
-                email: form.email,
-                password: form.password
-            });
+            console.log('Attempting to login...'); // Debug log
+            
+            // Add request configuration
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                timeout: 5000 // 5 second timeout
+            };
 
-            // Store the token in localStorage for authentication
+            const response = await axios.post(
+                'http://localhost:5000/api/auth/login',
+                {
+                    email: form.email,
+                    password: form.password
+                },
+                config
+            );
+
+            console.log('Login response:', response.data); // Debug log
+
+            if (!response.data.token) {
+                throw new Error('No token received from server');
+            }
+
             localStorage.setItem('token', response.data.token);
-            
-            // Optionally store user data
             localStorage.setItem('user', JSON.stringify(response.data.user));
-            
-            // Redirect user to the dashboard upon successful login
             navigate('/dashboard');
+
         } catch (err) {
-            // Set error message if login fails
-            setError(err.response?.data?.message || "An error occurred during login");
+            console.error('Login error:', err); // Debug log
+            
+            if (err.response) {
+                // Server responded with error
+                setError(err.response.data.message || "Invalid credentials");
+            } else if (err.request) {
+                // No response received
+                setError("Cannot connect to server. Please check if the server is running.");
+            } else {
+                // Other errors
+                setError("An unexpected error occurred. Please try again.");
+            }
         } finally {
-            // Reset loading state
             setLoading(false);
         }
     };
+
+    // Add connection check
+    useEffect(() => {
+        const checkServer = async () => {
+            try {
+                await axios.get('http://localhost:5000/api/health');
+            } catch (err) {
+                setError("Server connection failed. Please ensure the backend is running.");
+            }
+        };
+        
+        checkServer();
+    }, []);
 
     return (
         <div className="auth-container">
