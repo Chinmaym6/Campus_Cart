@@ -1,0 +1,336 @@
+/* Purchases Page Wrapper */
+.purchases-page-wrapper {
+    min-height: 100vh;
+    background: #f8fafc;
+}
+
+/* Page header with purchase theme */
+.purchases-page-header {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    padding: 40px 0 60px;
+    margin-bottom: -40px;
+    position: relative;
+}
+
+.purchases-page-header::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: #f8fafc;
+    border-radius: 40px 40px 0 0;
+}
+
+.purchases-header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.purchases-title-section h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.purchases-title-section p {
+    opacity: 0.9;
+    margin: 0;
+    font-size: 16px;
+}
+
+.purchases-header-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.purchases-header-actions .btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.purchases-header-actions .btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Purchase summary cards */
+.purchases-summary {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 2;
+}
+
+.purchases-summary-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    border: 1px solid #f3f4f6;
+    transition: all 0.2s ease;
+}
+
+.purchases-summary-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+.purchases-summary-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.purchases-summary-number {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 4px;
+}
+
+.purchases-summary-label {
+    color: #6b7280;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Purchase history timeline */
+.purchases-timeline {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    margin-bottom: 32px;
+}
+
+.timeline-header {
+    background: white;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timeline-header h3 {
+    margin: 0;
+    color: #1f2937;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.timeline-filters {
+    display: flex;
+    gap: 8px;
+}
+
+.timeline-filter-btn {
+    padding: 6px 12px;
+    border: 2px solid #e5e7eb;
+    border-radius: 6px;
+    background: white;
+    color: #6b7280;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.timeline-filter-btn:hover {
+    border-color: #10b981;
+    color: #10b981;
+}
+
+.timeline-filter-btn.active {
+    background: #10b981;
+    border-color: #10b981;
+    color: white;
+}
+
+/* Loading state for purchases */
+.purchases-page-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    background: white;
+    border-radius: 16px;
+    margin: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.purchases-loading-text {
+    margin-top: 20px;
+    color: #6b7280;
+    font-size: 16px;
+}
+
+/* Empty state enhancement */
+.purchases-empty-state {
+    background: white;
+    border-radius: 20px;
+    padding: 60px 40px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+.purchases-empty-icon {
+    font-size: 80px;
+    margin-bottom: 24px;
+    opacity: 0.7;
+}
+
+.purchases-empty-state h3 {
+    color: #1f2937;
+    margin: 0 0 12px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.purchases-empty-state p {
+    color: #6b7280;
+    margin: 0 0 32px;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.purchases-empty-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+/* Purchase insights */
+.purchases-insights {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border: 2px solid #bbf7d0;
+    border-radius: 16px;
+    padding: 24px;
+    margin: 32px auto;
+    max-width: 1200px;
+}
+
+.purchases-insights h4 {
+    color: #166534;
+    margin: 0 0 16px;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.insight-item {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid #bbf7d0;
+}
+
+.insight-label {
+    color: #166534;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.insight-value {
+    color: #1f2937;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .purchases-header-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 0 16px;
+    }
+    
+    .purchases-summary {
+        padding: 0 16px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    
+    .purchases-timeline {
+        padding: 0 16px;
+    }
+    
+    .timeline-header {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .timeline-filters {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .purchases-empty-actions {
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .insights-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .purchases-page-header {
+        padding: 32px 0 50px;
+    }
+    
+    .purchases-title-section h1 {
+        font-size: 22px;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .purchases-summary {
+        grid-template-columns: 1fr;
+    }
+    
+    .purchases-empty-state {
+        padding: 40px 24px;
+        margin: 24px 16px;
+    }
+}

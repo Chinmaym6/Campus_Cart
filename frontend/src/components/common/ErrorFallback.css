@@ -1,0 +1,115 @@
+.error-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 2rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.error-fallback-content {
+    background: white;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+}
+
+.error-icon {
+    font-size: 4rem;
+    color: #f56565;
+    margin-bottom: 1.5rem;
+}
+
+.error-fallback h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 1rem;
+}
+
+.error-description {
+    color: #718096;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.error-details {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.error-details summary {
+    cursor: pointer;
+    font-weight: 500;
+    color: #4a5568;
+    margin-bottom: 1rem;
+}
+
+.error-message {
+    background: #f7fafc;
+    padding: 1rem;
+    border-radius: 6px;
+    border-left: 4px solid #f56565;
+    color: #e53e3e;
+    font-size: 0.875rem;
+    white-space: pre-wrap;
+    overflow-x: auto;
+}
+
+.error-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.retry-button,
+.home-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.retry-button {
+    background: #667eea;
+    color: white;
+}
+
+.retry-button:hover {
+    background: #5a67d8;
+    transform: translateY(-1px);
+}
+
+.home-button {
+    background: #e2e8f0;
+    color: #4a5568;
+}
+
+.home-button:hover {
+    background: #cbd5e0;
+}
+
+@media (max-width: 480px) {
+    .error-fallback-content {
+        padding: 2rem 1.5rem;
+    }
+    
+    .error-actions {
+        flex-direction: column;
+    }
+    
+    .retry-button,
+    .home-button {
+        width: 100%;
+    }
+}

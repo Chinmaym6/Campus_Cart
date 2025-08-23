@@ -1,0 +1,28 @@
+.route-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    gap: 1rem;
+}
+
+.route-loading .loading-spinner {
+    width: 2rem;
+    height: 2rem;
+    border: 3px solid #e2e8f0;
+    border-top: 3px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.route-loading p {
+    color: #718096;
+    font-size: 1rem;
+    margin: 0;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}

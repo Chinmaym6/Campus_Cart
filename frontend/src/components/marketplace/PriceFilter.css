@@ -1,0 +1,371 @@
+.price-filter {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f3f4f6;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #f3f4f6;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+.filter-header:hover {
+    background: #fafbfc;
+}
+
+.filter-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.active-indicator {
+    color: #667eea;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.toggle-btn {
+    background: #f3f4f6;
+    border: none;
+    border-radius: 6px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    color: #6b7280;
+    transition: all 0.2s ease;
+}
+
+.toggle-btn:hover {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.filter-content {
+    padding: 20px;
+}
+
+/* Mode Toggle */
+.mode-toggle {
+    display: flex;
+    background: #f3f4f6;
+    border-radius: 8px;
+    padding: 4px;
+    margin-bottom: 20px;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: #6b7280;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mode-btn.active {
+    background: white;
+    color: #667eea;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Current Selection */
+.current-selection {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.selection-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #667eea;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.selection-value {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 500;
+    color: #667eea;
+}
+
+.clear-btn {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.clear-btn:hover {
+    background: rgba(156, 163, 175, 0.1);
+    color: #6b7280;
+}
+
+/* Price Presets */
+.price-presets {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.preset-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border: 2px solid #f3f4f6;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.preset-btn:hover {
+    border-color: #e5e7eb;
+    background: #fafbfc;
+}
+
+.preset-btn.active {
+    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.05);
+    color: #667eea;
+}
+
+.preset-label {
+    flex: 1;
+    text-align: left;
+}
+
+.check-icon {
+    color: #667eea;
+    font-weight: 600;
+}
+
+/* Custom Price Inputs */
+.custom-price-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.price-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.price-input-group label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.price-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.currency-symbol {
+    position: absolute;
+    left: 12px;
+    color: #6b7280;
+    font-weight: 500;
+    z-index: 1;
+}
+
+.price-input-wrapper input {
+    width: 100%;
+    padding: 10px 12px 10px 28px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    background: white;
+    color: #1f2937;
+    transition: all 0.2s ease;
+}
+
+.price-input-wrapper input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.price-input-wrapper input::placeholder {
+    color: #9ca3af;
+}
+
+.price-separator {
+    text-align: center;
+    color: #6b7280;
+    font-weight: 500;
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+.custom-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.apply-btn {
+    flex: 1;
+    padding: 10px 16px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.apply-btn:hover {
+    background: #5a67d8;
+    transform: translateY(-1px);
+}
+
+.clear-btn-text {
+    padding: 10px 16px;
+    background: #f3f4f6;
+    color: #6b7280;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.clear-btn-text:hover {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+/* Price Stats */
+.price-stats {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #f3f4f6;
+}
+
+.stats-header {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.price-tips {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tip-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #4b5563;
+}
+
+.tip-icon {
+    font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .filter-header {
+        padding: 16px;
+    }
+    
+    .filter-content {
+        padding: 16px;
+    }
+    
+    .custom-actions {
+        flex-direction: column;
+    }
+    
+    .mode-toggle {
+        margin-bottom: 16px;
+    }
+}
+
+/* Range Slider Alternative (Optional) */
+.range-slider {
+    margin: 20px 0;
+}
+
+.range-input {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: #e5e7eb;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.range-input::-webkit-slider-thumb {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #667eea;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.range-input::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #667eea;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
