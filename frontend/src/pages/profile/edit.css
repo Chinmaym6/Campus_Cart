@@ -1,0 +1,123 @@
+/* Edit Profile Page Wrapper */
+.edit-profile-page-wrapper {
+    min-height: 100vh;
+    background: #f8fafc;
+}
+
+/* Page transition animation */
+.edit-profile-page-wrapper .edit-profile-page {
+    animation: slideInFromRight 0.5s ease forwards;
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Loading state for edit page */
+.edit-page-loading {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+}
+
+/* Breadcrumb for edit page */
+.edit-breadcrumb {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.edit-breadcrumb a {
+    color: #667eea;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.edit-breadcrumb a:hover {
+    color: #5a67d8;
+    text-decoration: underline;
+}
+
+.edit-breadcrumb .separator {
+    color: #d1d5db;
+    margin: 0 4px;
+}
+
+.edit-breadcrumb .current {
+    color: #374151;
+    font-weight: 500;
+}
+
+/* Success message overlay */
+.edit-success-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.edit-success-card {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 90%;
+}
+
+.edit-success-card .success-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+    color: #10b981;
+}
+
+.edit-success-card h3 {
+    color: #1f2937;
+    margin: 0 0 12px;
+    font-size: 20px;
+}
+
+.edit-success-card p {
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.5;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .edit-breadcrumb {
+        padding: 16px;
+        font-size: 13px;
+    }
+    
+    .edit-success-card {
+        padding: 32px 24px;
+    }
+}
