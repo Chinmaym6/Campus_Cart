@@ -1,7 +1,7 @@
 # Environment files
-.env                    # Ignores .env in root directory
-backend/.env           # Specifically ignores .env in backend folder
-frontend/.env          # Specifically ignores .env in frontend folder
+.env
+backend/.env
+frontend/.env
 
 # Alternative pattern to catch all .env files
-**/.env               # Ignores .env files in any subdirectory at any level
+**/.env
