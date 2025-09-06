@@ -104,3 +104,11 @@ export async function saveItem({ userId, id }) {
 export async function unsaveItem({ userId, id }) {
   await repo.unsaveItem({ userId, item_id: Number(id) });
 }
+
+export async function listMine({ sellerId, query }) {
+  const limit = Math.min(Number(query.limit || 50), 100);
+  const offset = Number(query.offset || 0);
+  const sort = (query.sort || "new"); // new | price_asc | price_desc | active
+
+  return repo.listBySeller({ sellerId, limit, offset, sort });
+}

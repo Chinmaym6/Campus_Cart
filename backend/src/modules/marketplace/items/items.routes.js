@@ -7,7 +7,8 @@ const r = Router();
 
 // LISTS (dashboard + marketplace)
 r.get("/", requireAuth, controller.list);
-r.get("/saved", requireAuth, controller.listSaved);
+r.get("/saved", requireAuth, controller.listSaved); 
+r.get("/mine", requireAuth, controller.listMine);  
 
 // CRUD
 r.post("/", requireAuth, upload.array("photos", 8), controller.create);
@@ -16,7 +17,7 @@ r.patch("/:id", requireAuth, controller.update);
 r.delete("/:id", requireAuth, controller.remove);
 
 // Wishlist
-r.post("/:id/save", requireAuth, controller.saveItem);
-r.delete("/:id/save", requireAuth, controller.unsaveItem);
+r.post("/:id/save", requireAuth, controller.save);
+r.delete("/:id/save", requireAuth, controller.unsave);
 
 export default r;

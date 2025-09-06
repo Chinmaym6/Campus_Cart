@@ -5,10 +5,12 @@ import categoriesRoutes from "./modules/marketplace/categories/categories.routes
 import itemsRoutes from "./modules/marketplace/items/items.routes.js";
 import roommateRoutes from "./modules/roommate/roommate.routes.js";
 import notificationsRoutes from "./modules/notifications/notifications.routes.js";
+import offers from "./modules/offers/offers.routes.js"; 
 
 const r = Router();
 r.use("/auth", authRoutes);
 r.use("/users", usersRoutes);
+r.use("/offers", offers); 
 r.use("/categories", categoriesRoutes);
 r.use("/items", itemsRoutes);
 r.use("/roommate", roommateRoutes);

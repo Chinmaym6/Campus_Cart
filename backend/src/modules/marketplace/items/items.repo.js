@@ -225,8 +225,11 @@ export async function search({ viewerId, q, category_id, min_price, max_price, c
     price_cents: r.price_cents,
     created_at: r.created_at,
     cover_photo_url: r.cover_path ? `/uploads/${r.cover_path}` : null,
+    is_saved: r.is_saved ?? false,
   }));
 }
+
+
 
 export async function getItemById(id) {
   const { rows } = await db.query(
@@ -401,4 +404,49 @@ export async function getSavedItems({ viewerId, limit = 4 }) {
     price_cents: r.price_cents,
     cover_photo_url: r.cover_path ? `/uploads/${r.cover_path}` : null,
   }));
+}
+
+export async function listBySeller({ sellerId, limit, offset, sort }) {
+  let orderBy = "i.created_at DESC";
+  if (sort === "price_asc") orderBy = "i.price_cents ASC";
+  if (sort === "price_desc") orderBy = "i.price_cents DESC";
+  if (sort === "active") orderBy = "CASE WHEN i.status = 'active' THEN 0 ELSE 1 END, i.created_at DESC";
+
+  const { rows } = await db.query(
+    `
+    SELECT
+      i.id, i.title, i.price_cents, i.status, i.created_at,
+      (SELECT ip.file_path
+         FROM campus_cart.item_photos ip
+        WHERE ip.item_id = i.id
+        ORDER BY ip.sort_order ASC, ip.id ASC
+        LIMIT 1) AS cover_path
+    FROM campus_cart.items i
+    WHERE i.seller_id = $1
+    ORDER BY ${orderBy}
+    LIMIT $2 OFFSET $3
+    `,
+    [sellerId, limit, offset]
+  );
+
+  return rows.map(r => {
+    const name = r.cover_path ? String(r.cover_path).split(/[\\/]/).pop() : null;
+    return {
+      id: r.id,
+      title: r.title,
+      price_cents: r.price_cents,
+      status: r.status,
+      created_at: r.created_at,
+      cover_photo_url: name ? `/uploads/${name}` : null
+    };
+  });
+}
+
+export async function findByIdRaw(id) {
+  const { rows } = await db.query(`SELECT * FROM campus_cart.items WHERE id=$1`, [id]);
+  return rows[0];
+}
+
+export async function updateStatus(id, status) {
+  await db.query(`UPDATE campus_cart.items SET status=$2 WHERE id=$1`, [id, status]);
 }
