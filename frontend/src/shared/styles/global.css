@@ -9,3 +9,11 @@ a:hover { text-decoration: underline; }
   from { transform: rotate(0deg); } 
   to { transform: rotate(360deg); } 
 }
+/* Prevent images from exceeding their containers (safety) */
+img { max-width: 100%; height: auto; display: block; }
+
+/* Nice little hover for all cards (opt-in if you add .cc-card class to links) */
+.cc-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}

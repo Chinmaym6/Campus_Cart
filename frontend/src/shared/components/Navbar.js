@@ -14,15 +14,21 @@ export default function Navbar() {
           <Link to="/marketplace">Marketplace</Link>
           <Link to="/roommate">Roommates</Link>
           <Link to="/notifications">Notifications</Link>
+          <Link to="/offers">Offers</Link>{" | "}
+
         </div>
       )}
       <div style={{ marginLeft: "auto" }}>
         {user ? (
-          <>
-            <span style={{ marginRight: 12 }}>Hi, {user.first_name || user.email}</span>
-            <button style={styles.logoutBtn} onClick={logout}>Logout</button>
-          </>
-        ) : (
+  <>
+    <Link to="/marketplace">Marketplace</Link>{" | "}
+    <Link to="/marketplace/mine">My Listings</Link>{" | "}
+    <Link to="/marketplace/saved">Saved</Link>{" | "}
+    <Link to="/marketplace/create">Sell</Link>
+    <span style={{ marginLeft: 12, marginRight: 12 }}>Hi, {user.first_name || user.email}</span>
+    <button onClick={logout}>Logout</button>
+  </>
+) : (
           <>
             <Link to="/login">Login</Link>{" | "}
             <Link to="/register">Register</Link>

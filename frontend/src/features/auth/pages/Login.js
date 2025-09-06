@@ -13,11 +13,10 @@ export default function Login() {
     setErr("");
     try {
       await login(form.email.trim(), form.password);
-      nav("/");
+      nav("/dashboard");
     } catch (e) {
       const apiErr = e?.response?.data;
       if (apiErr?.details?.length) {
-        // Zod details -> join messages
         setErr(apiErr.details.map(d => d.message).join(" · "));
       } else {
         setErr(apiErr?.error || "Login failed");
@@ -25,45 +24,81 @@ export default function Login() {
     }
   }
 
-  const input = { padding: 10, width: 280, maxWidth: "100%" };
-
   return (
-    <div style={{ padding: "2rem" }}>
-      <h2>Login</h2>
-      <form onSubmit={onSubmit}>
-        <div style={{ marginBottom: 8 }}>
+    <div style={styles.wrapper}>
+      <div style={styles.card}>
+        <h2 style={styles.title}>Login</h2>
+        <form onSubmit={onSubmit}>
           <input
             type="email"
             placeholder="Email"
             value={form.email}
-            onChange={e=>setForm({...form, email: e.target.value})}
-            style={input}
+            onChange={e=>setForm({...form, email:e.target.value})}
+            style={styles.input}
             required
           />
-        </div>
-        <div style={{ marginBottom: 8 }}>
           <input
             type="password"
             placeholder="Password"
             value={form.password}
-            onChange={e=>setForm({...form, password: e.target.value})}
-            style={input}
+            onChange={e=>setForm({...form, password:e.target.value})}
+            style={styles.input}
             required
             minLength={6}
           />
+          <button type="submit" style={styles.btn}>Login</button>
+        </form>
+
+        <div style={styles.links}>
+          <Link to="/forgot-password">Forgot password?</Link>
         </div>
-        <button type="submit">Login</button>
-      </form>
 
-      <div style={{ marginTop: 8 }}>
-        <Link to="/forgot-password">Forgot password?</Link>
+        {err && <p style={styles.error}>{err}</p>}
+
+        <p style={styles.footer}>
+          New here? <Link to="/register">Create account</Link>
+        </p>
       </div>
-
-      {err && <pre style={{ color: "red", whiteSpace: "pre-wrap" }}>{err}</pre>}
-
-      <p style={{ marginTop: 16 }}>
-        New here? <Link to="/register">Register</Link>
-      </p>
     </div>
   );
 }
+
+const styles = {
+  wrapper: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    minHeight: "80vh",
+    background: "#f9fafb"
+  },
+  card: {
+    background: "#fff",
+    padding: "2rem",
+    borderRadius: 12,
+    boxShadow: "0 6px 16px rgba(0,0,0,0.1)",
+    width: "100%",
+    maxWidth: 400
+  },
+  title: { marginBottom: 20 },
+  input: {
+    display: "block",
+    width: "100%",
+    padding: 12,
+    marginBottom: 14,
+    borderRadius: 8,
+    border: "1px solid #d1d5db"
+  },
+  btn: {
+    width: "100%",
+    padding: 12,
+    border: "none",
+    borderRadius: 8,
+    background: "#0b74de",
+    color: "#fff",
+    fontWeight: "bold",
+    cursor: "pointer"
+  },
+  links: { marginTop: 12, fontSize: "0.9rem" },
+  error: { color: "red", marginTop: 12 },
+  footer: { marginTop: 16, fontSize: "0.95rem" }
+};
